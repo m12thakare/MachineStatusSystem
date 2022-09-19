@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MachineStatusSystem.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Search Result</h3>
+<div class="form-group">
+   
+    <a asp-action="UserList" class="btn btn-outline-success">Back to User List</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Create", new { id = item.Id, item.Name, item.Email, item.Mobile, item.Designation }, new { @class = "btn btn-success", onclick = "return confirm('Do you really want to Edit ?!!!')" }) |
+                    @*    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Do you really want to Delete ?!!!')" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

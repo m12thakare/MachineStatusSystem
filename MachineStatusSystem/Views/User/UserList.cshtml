@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@model IEnumerable<MachineStatusSystem.Models.User>
+
+@{
+    ViewData["Title"] = "UserList";
+}
+
+
+@*@ViewBag.designation
+
+ HttpContext.Session.SetString("UserData", Query.ToString());*@
+@* @HttpContextAccessor.HttpContext.Session.GetString("UserData");*@
+<p>
+    @*  @HttpContextAccessor.HttpContext.Session.GetString("UserId")*@
+    <h4>Total User's in list @ViewBag.totalcnt </h4>
+</p>
+<div>
+    <div>
+        <form method="get" asp-action="Index">
+
+            <p>
+                <input type="search" placeholder="Enter Name to search.."
+                       value="" name="UserSearch"
+                       style="width:200px;" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+                <a asp-action="Create" class="btn btn-outline-primary float-right"> Add New </a>
+
+            </p>
+            <p>
+
+            </p>
+
+        </form>
+    </div>
+    <div>
+
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Create", new { id = item.Id, item.Name, item.Email, item.Mobile, item.Designation }, new { @class = "btn btn-success", onclick = "return confirm('Do you  want to Modify the record!!!')" }) |
+
+                    @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Do you really want to Delete ?!!!')" })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
