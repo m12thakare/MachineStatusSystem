@@ -16,21 +16,13 @@ namespace MachineStatusSystem.Repository
             _context = context;
             _config = config;
         }
-        /*public string Login(string userName, string password)
-        {
-            var user = _context.Users.FirstOrDefault(x => x.Username.ToLower().Equals(userName.ToLower()));
-            if (user == null)
-            {
-                return "0";
-            }
-        }*/
-
+        
         public string Login(string userName, string password)
         {
             var user = _context.LoginUser.FirstOrDefault(x => x.Username.ToLower().Equals(userName.ToLower()));
             if (user == null)
             {
-                return "0";//msg
+                return "0";
             }
             else if (VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
             {
