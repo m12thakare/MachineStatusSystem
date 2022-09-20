@@ -5,16 +5,8 @@
 @{
     ViewData["Title"] = "UserList";
 }
-
-
-@*@ViewBag.designation
-
- HttpContext.Session.SetString("UserData", Query.ToString());*@
-@* @HttpContextAccessor.HttpContext.Session.GetString("UserData");*@
-<p>
-    @*  @HttpContextAccessor.HttpContext.Session.GetString("UserId")*@
     <h4>Total User's in list @ViewBag.totalcnt </h4>
-</p>
+
 <div>
     <div>
         <form method="get" asp-action="Index">

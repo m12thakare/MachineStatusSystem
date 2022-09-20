@@ -36,7 +36,7 @@ namespace MachineStatusSystem.Controllers
             try
             {
                  var userList = _Db.User.ToList();
-              /*  List<UserView>  userList1 = null;*/
+             
                 var cnt = _Db.User.Count();
                           
 
@@ -47,16 +47,7 @@ namespace MachineStatusSystem.Controllers
                                 p.First().Designation,
                             };
 
-                
-                // HttpContext.Session.SetString("UserData", Query.ToString());
-                // HttpContext.Session.SetString("UserData", Query.Count1);
-                //  ViewBag.designation = Query.ToString();
-               /* foreach (var x in Query)
-                {
-                    x.count1.ToString();
-                    x.Designation.ToString();
-                }*/
-
+             
                 ViewBag.totalcnt = cnt;
                  return View(userList);
             }
